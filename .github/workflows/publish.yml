@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   publish_modules:
-    runs-on: ubuntu-latest
+    runs-on: python:3.7.6
     env:
       GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
       ARTIFACTORY_USER: ${{ secrets.ARTIFACTORY_USER }}
@@ -13,7 +13,7 @@ jobs:
       ARTIFACTORY_URL: https://arti.tw.ee/artifactory/terraform-kubernetes
     steps:
       - name: Upgrade git
-        run: sudo apt-get upgrade git
+        run: sudo apt-get install git
 
       - name: Checkout repo
         uses: actions/checkout@v2
