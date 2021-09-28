@@ -6,7 +6,7 @@ on:
 jobs:
   publish_modules:
     runs-on: ubuntu-latest
-    container: python:3.7.6
+    container: python:3.7.6-stretch
     env:
       GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
       ARTIFACTORY_USER: ${{ secrets.ARTIFACTORY_USER }}
