@@ -13,7 +13,7 @@ jobs:
       ARTIFACTORY_URL: https://arti.tw.ee/artifactory/terraform-kubernetes
     steps:
       - name: Upgrade git
-        run: sudo apt-get install git=2.33.0
+        run: sudo apt-get install git
 
       - name: Checkout repo
         uses: actions/checkout@v2
