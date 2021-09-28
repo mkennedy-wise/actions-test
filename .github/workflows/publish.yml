@@ -1,0 +1,22 @@
+---
+on:
+  push:
+    branches:
+      - master
+jobs:
+  publish_modules:
+    runs-on: [self-hosted, production]
+    container: docker.tw.ee/k8s-builder:3.8
+    env:
+      GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+      ARTIFACTORY_USER: ${{ secrets.ARTIFACTORY_USER }}
+      ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
+      ARTIFACTORY_URL: https://arti.tw.ee/artifactory/terraform-kubernetes
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+        #      - name: Publish modules
+        #        run: ./tools/publish.sh -publish -compare-url="https://github.com/transferwise/terraform-kubernetes/compare/$(git rev-parse HEAD^)...$(git rev-parse HEAD)"
+      - name: test
+        run: echo $(git rev-parse HEAD) && echo $(git rev-parse HEAD^)
