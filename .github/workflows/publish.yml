@@ -12,6 +12,9 @@ jobs:
       ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
       ARTIFACTORY_URL: https://arti.tw.ee/artifactory/terraform-kubernetes
     steps:
+      - name: Upgrade git
+        run: apt-get upgrade git
+
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
