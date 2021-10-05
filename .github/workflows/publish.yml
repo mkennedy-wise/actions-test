@@ -2,7 +2,9 @@
 on:
   push:
     branches:
-      - master
+      - '!*'
+    tags:
+      - 'v*'
 jobs:
   publish_modules:
     runs-on: ubuntu-latest
@@ -28,3 +30,9 @@ jobs:
 
       - name: test2
         run: ./tools/publish.sh
+
+      - name: vars
+        run: echo "VERSION=$(cat VERSION)" >> $GITHUB_ENV
+
+      - name: print var
+        run: echo "$VERSION"
