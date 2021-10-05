@@ -36,3 +36,10 @@ jobs:
 
       - name: print var
         run: echo "$VERSION"
+
+      - name: tag env
+        run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+      - name: print tag
+        run: echo "$VERSION"
+
