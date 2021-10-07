@@ -40,3 +40,6 @@ jobs:
           DATETIME=$(date -u '+%y%m%d.%H%M%S')
           COMMIT=$(git rev-parse --short HEAD)
           echo "VERSION=1.${DATETIME}-${COMMIT}" >> $GITHUB_ENV
+
+      - name: print var 2
+        run: echo "$VERSION"
