@@ -2,9 +2,7 @@
 on:
   push:
     branches:
-      - '!*'
-    tags:
-      - 'v*'
+      - 'master'
 jobs:
   publish_modules:
     runs-on: ubuntu-latest
@@ -37,9 +35,8 @@ jobs:
       - name: print var
         run: echo "$VERSION"
 
-      - name: tag env
-        run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-
-      - name: print tag
-        run: echo "$VERSION"
-
+      - name: version wow
+        run: |
+          DATETIME=$(date -u '+%y%m%d.%H%M%S')
+          COMMIT=$(git rev-parse --short HEAD)
+          echo "VERSION=1.${DATETIME}-${COMMIT}" >> $GITHUB_ENV
